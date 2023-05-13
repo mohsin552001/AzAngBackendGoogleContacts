@@ -2,15 +2,18 @@ import { db } from "../../db"
 
 
 
-export let createLabelController =function(req,res){
+export let createLabelController = async function(req,res){
   
-   db.query(`INSERT INTO labels (title) VALUES ('${req.body.title}') `,function (err,results) {
-    if(err){
-       
+
+    try{
+      await  db.query(`INSERT INTO labels (title) VALUES ('${req.body.title}') `)
+      res.send('Label created')
+    }catch(e){
+        console.log(e)
         res.status(500).send('something broke')
-    }else{
-        res.send('Label created')
     }
-    
-   })
+
 }
+
+
+

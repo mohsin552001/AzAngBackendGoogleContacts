@@ -7,5 +7,5 @@ import { getLabelController } from "../../controllers/labels/get.Controller";
 export let labelRoutes = express.Router();
 labelRoutes.post("", createLabelController);
 labelRoutes.patch("", updateLabelController);
-labelRoutes.delete("", deleteLabelController);
+labelRoutes.delete("/:id", deleteLabelController);
 labelRoutes.get("", getLabelController);
